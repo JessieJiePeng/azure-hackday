@@ -43,7 +43,7 @@ jobs:
           azcliversion: latest
           inlineScript: |
             az storage blob upload-batch \
-              --account-name azhackdayfrontend16 \
+              --account-name azurehackdayjessie \
               --account-key ${{ secrets.AZURE_STORAGE_ACCOUNT_KEY }} \
               --destination '$web' \
               --source frontend/dist \
