@@ -7,6 +7,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
 // To allow CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 
 
 var app = builder.Build();
@@ -18,6 +27,9 @@ var app = builder.Build();
     app.UseSwaggerUI();
 // }
 
+if (app.Environment.IsDevelopment()){
+    app.UseCors("AllowAll");
+}
 app.UseHttpsRedirection();
 app.MapControllers();
 
